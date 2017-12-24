@@ -149,13 +149,13 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 {240,120, 240,180, 300,180, 300,120},
                 {  0,100,   0,200,  60,180,  60,120},
                 {100,100, 100,200, 120,180, 120,120},
-                {200,100, 200,200, 180,180, 180,120},
-                {300,100, 300,200, 240,180, 240,120},
+                {180,120, 180,180, 200,200, 200,100},
+                {240,120, 240,180, 300,200, 300,100}, //300,100, 300,200, 240,180, 240,120
                 {  0,100,   0,200, 100,200, 100,100},
                 {100,100, 100,200, 200,200, 200,100},
                 {200,100, 200,200, 300,200, 300,100},
                 { 70, 70,  70,230, 100,200, 100,100},
-                {230, 70, 230,230, 200,200, 200,100},
+                {200,100, 200,200, 230,230, 230, 70}, //230, 70, 230,230, 200,200, 200,100
                 {  0, 70,   0,230,  70,230,  70, 70},
                 { 70, 70,  70,230, 230,230, 230, 70},
                 {230, 70, 230,230, 300,230, 300, 70},
@@ -170,14 +170,265 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
 
         //座標データをポリゴン描画用にパスとして格納、またLine描画用に配列に格納
         for(int i=0;i<24;i++){
-            //壁
-            path.moveTo(pt[i][0],pt[i][1]);
-            path.lineTo(pt[i][2],pt[i][3]);
-            path.lineTo(pt[i][4],pt[i][5]);
-            path.lineTo(pt[i][6],pt[i][7]);
-            //壁の枠のデータを配列に格納(drawLines用に設定)
-            float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-            fb.put(data);
+            switch (i) {
+                //４ブロック先の正面の壁
+                case 0:
+                    if (ac.mDrawMap.data[0][0]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 1:
+                    if (ac.mDrawMap.data[0][1]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 2:
+                    if (ac.mDrawMap.data[0][2]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 3:
+                    if (ac.mDrawMap.data[0][3]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 4:
+                    if (ac.mDrawMap.data[0][4]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                //３ブロック先の横の壁
+                case 5:
+                    if (ac.mDrawMap.data[1][0]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 6:
+                    if (ac.mDrawMap.data[1][1]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 7:
+                    if (ac.mDrawMap.data[1][3]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 8:
+                    if (ac.mDrawMap.data[1][4]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                //３ブロック先の正面の壁
+                case 9:
+                    if (ac.mDrawMap.data[1][1]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 10:
+                    if (ac.mDrawMap.data[1][2]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 11:
+                    if (ac.mDrawMap.data[1][3]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                //２ブロック先の横の壁
+                case 12:
+                    if (ac.mDrawMap.data[2][1]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 13:
+                    if (ac.mDrawMap.data[2][3]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                //２ブロック先の正面の壁
+                case 14:
+                    if (ac.mDrawMap.data[2][1]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 15:
+                    if (ac.mDrawMap.data[2][2]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 16:
+                    if (ac.mDrawMap.data[2][3]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                //１ブロック先の横の壁
+                case 17:
+                    if (ac.mDrawMap.data[3][1]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 18:
+                    if (ac.mDrawMap.data[3][3]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                //１ブロック先の正面の壁
+                case 19:
+                    if (ac.mDrawMap.data[3][1]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 20:
+                    if (ac.mDrawMap.data[3][2]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 21:
+                    if (ac.mDrawMap.data[3][3]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                //自分がいる位置の左右の壁
+                case 22:
+                    if (ac.mDrawMap.data[4][1]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 23:
+                    if (ac.mDrawMap.data[4][3]==1){
+                        path.moveTo(pt[i][0],pt[i][1]);
+                        path.lineTo(pt[i][2],pt[i][3]);
+                        path.lineTo(pt[i][4],pt[i][5]);
+                        path.lineTo(pt[i][6],pt[i][7]);
+                        float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                        fb.put(data);
+                    }
+                    break;
+                case 24:
+                    //最後の囲み
+                    path.moveTo(pt[i][0],pt[i][1]);
+                    path.lineTo(pt[i][2],pt[i][3]);
+                    path.lineTo(pt[i][4],pt[i][5]);
+                    path.lineTo(pt[i][6],pt[i][7]);
+                    //壁の枠のデータを配列に格納(drawLines用に設定)
+                    float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
+                    fb.put(data);
+            }
         }
         path.close();
 
@@ -189,6 +440,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         //壁の枠を白で描画
         mPaint.setColor(Color.WHITE);
         canvas.drawLines(fb.array(), mPaint);
+
     }
 
 
