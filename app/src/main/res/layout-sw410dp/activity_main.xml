@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <SurfaceView
+        android:id="@+id/MainSurfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="418dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#469">
+        <Button
+            android:id="@+id/btnUp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="72dp"
+            android:drawableTop="@drawable/key_up" />
+        <Button
+            android:id="@+id/btnLeft"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/btnUp"
+            android:layout_marginRight="80dp"
+            android:drawableLeft="@drawable/key_left" />
+        <Button
+            android:id="@+id/btnRight"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/btnUp"
+            android:layout_marginLeft="140dp"
+            android:drawableRight="@drawable/key_right" />
+        <Button
+            android:id="@+id/btnDown"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/btnLeft"
+            android:layout_marginLeft="72dp"
+            android:drawableBottom="@drawable/key_down" />
+        <Button
+            android:id="@+id/btnData"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="12dp"
+            android:text="データ"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:background="@drawable/button_round"
+            android:onClick="onClick" />
+        <Button
+            android:id="@+id/btnWeapon"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/btnData"
+            android:layout_alignParentRight="true"
+			android:layout_marginTop="12dp"
+            android:layout_marginRight="6dp"
+            android:text="装備"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:background="@drawable/button_round"
+            android:onClick="onClick" />
+        <Button
+            android:id="@+id/btnItem"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/btnWeapon"
+            android:layout_alignParentRight="true"
+			android:layout_marginTop="12dp"
+            android:layout_marginRight="6dp"
+            android:text="アイテム"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:background="@drawable/button_round"
+            android:onClick="onClick"/>
+    </RelativeLayout>
+</LinearLayout>
