@@ -11,6 +11,7 @@ public class MyChara {
     public int base_index; //アニメーション用 0:上 1:右 2:下 3:左
     public int index; //アニメーション用カウンタ
     public int currentMap; //現在キャラが存在するマップID
+    protected int mx, my;
 
     public MyChara(MainActivity _ac){
         ac = _ac;
@@ -25,6 +26,8 @@ public class MyChara {
         base_index = 4;
         index = 0;
         currentMap = 0;
+        mx = 4;
+        my = 4;
     }
 
     public void move(){
@@ -42,18 +45,22 @@ public class MyChara {
         if (x < -8.0f) {
             currentMap = ac.mMap[currentMap].next[3];
             x = 288.0f;
+            ac.transMap();
         }
         if (x > 296.0f) { //画面右端1/4キャラ(8px)以上
             currentMap = ac.mMap[currentMap].next[1];
             x = 0.0f;
+            ac.transMap();
         }
         if (y < -8.0f) {
             currentMap = ac.mMap[currentMap].next[0];
             y = 288.0f;
+            ac.transMap();
         }
         if (y > 296.0f) {  //画面下1/4キャラ(8px)以上
             currentMap = ac.mMap[currentMap].next[2];
             y = 0.0f;
+            ac.transMap();
         }
         //座標更新
         x = x + vx;

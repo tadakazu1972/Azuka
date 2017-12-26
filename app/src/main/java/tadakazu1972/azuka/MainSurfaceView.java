@@ -31,6 +31,8 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     private Bitmap[] sMap;
     //ワイヤーフレーム描画用
     private Paint mPaint = new Paint();
+    private Paint mPaint7 = new Paint();
+    private Paint mPaintLine = new Paint();
 
     public MainSurfaceView(Context context, SurfaceView _surfaceview, int _deviceWidth, int _deviceHeight){
         super(context);
@@ -136,9 +138,52 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
 
 
     private void drawPath(Canvas canvas){
+        //壁の枠を白で描画
+        mPaintLine.setColor(Color.WHITE);
+        mPaintLine.setStrokeWidth(2);
+
+        //天井　横の線
+        canvas.drawLine(0,  0,300, 0, mPaintLine);
+        canvas.drawLine(0, 30,300,30, mPaintLine);
+        canvas.drawLine(0, 70,300,70, mPaintLine);
+        canvas.drawLine(0,100, 300,100, mPaintLine);
+        canvas.drawLine(0, 120, 300, 120, mPaintLine);
+        //斜めの線
+        canvas.drawLine(0,100,60,120, mPaintLine);
+        canvas.drawLine(0,0,120,120, mPaintLine);
+        canvas.drawLine(300,0,180,120, mPaintLine);
+        canvas.drawLine(300,100,240,120, mPaintLine);
+
+        //床　横の線
+        canvas.drawLine(0,  180,300, 180, mPaintLine);
+        canvas.drawLine(0, 200,300,200, mPaintLine);
+        canvas.drawLine(0, 230,300,230, mPaintLine);
+        canvas.drawLine(0,270, 300,270, mPaintLine);
+        canvas.drawLine(0, 300, 300, 300, mPaintLine);
+        //斜めの線
+        canvas.drawLine(0,200,60,180, mPaintLine);
+        canvas.drawLine(0,300,120,180, mPaintLine);
+        canvas.drawLine(300,300,180,180, mPaintLine);
+        canvas.drawLine(300,200,240,180, mPaintLine);
+
         //変数初期化
         Path path = new Path();
+        Path path7 = new Path();
         FloatBuffer fb = FloatBuffer.allocate(400);
+        FloatBuffer fb0 = FloatBuffer.allocate(400);
+        FloatBuffer fb1 = FloatBuffer.allocate(400);
+        FloatBuffer fb2 = FloatBuffer.allocate(400);
+        FloatBuffer fb3 = FloatBuffer.allocate(400);
+        FloatBuffer fb4 = FloatBuffer.allocate(400);
+        FloatBuffer fb5 = FloatBuffer.allocate(400);
+        FloatBuffer fb6 = FloatBuffer.allocate(400);
+        FloatBuffer fb7 = FloatBuffer.allocate(400);
+        //壁を黒で塗りつぶす
+        mPaint.setColor(Color.BLACK);
+        mPaint.setStyle(Paint.Style.FILL);
+        mPaint7.setColor(Color.CYAN);
+        mPaint7.setStyle(Paint.Style.FILL);
+
 
         //座標データ用意
         float pt[][] = {
@@ -179,7 +224,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb0.put(data);
                     }
                     break;
                 case 1:
@@ -189,7 +234,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb0.put(data);
                     }
                     break;
                 case 2:
@@ -199,7 +244,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb0.put(data);
                     }
                     break;
                 case 3:
@@ -209,7 +254,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb0.put(data);
                     }
                     break;
                 case 4:
@@ -219,7 +264,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb0.put(data);
                     }
                     break;
                 //３ブロック先の横の壁
@@ -230,7 +275,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb1.put(data);
                     }
                     break;
                 case 6:
@@ -240,7 +285,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb1.put(data);
                     }
                     break;
                 case 7:
@@ -250,7 +295,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb1.put(data);
                     }
                     break;
                 case 8:
@@ -260,7 +305,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb1.put(data);
                     }
                     break;
                 //３ブロック先の正面の壁
@@ -271,7 +316,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb2.put(data);
                     }
                     break;
                 case 10:
@@ -281,7 +326,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb2.put(data);
                     }
                     break;
                 case 11:
@@ -291,7 +336,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb2.put(data);
                     }
                     break;
                 //２ブロック先の横の壁
@@ -302,7 +347,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb3.put(data);
                     }
                     break;
                 case 13:
@@ -312,7 +357,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb3.put(data);
                     }
                     break;
                 //２ブロック先の正面の壁
@@ -323,7 +368,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb4.put(data);
                     }
                     break;
                 case 15:
@@ -333,7 +378,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb4.put(data);
                     }
                     break;
                 case 16:
@@ -343,7 +388,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb4.put(data);
                     }
                     break;
                 //１ブロック先の横の壁
@@ -354,7 +399,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb5.put(data);
                     }
                     break;
                 case 18:
@@ -364,7 +409,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb5.put(data);
                     }
                     break;
                 //１ブロック先の正面の壁
@@ -375,7 +420,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb6.put(data);
                     }
                     break;
                 case 20:
@@ -385,7 +430,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb6.put(data);
                     }
                     break;
                 case 21:
@@ -395,54 +440,38 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                         path.lineTo(pt[i][4],pt[i][5]);
                         path.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb6.put(data);
                     }
                     break;
                 //自分がいる位置の左右の壁
                 case 22:
                     if (ac.mDrawMap.data[4][1]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path7.moveTo(pt[i][0],pt[i][1]);
+                        path7.lineTo(pt[i][2],pt[i][3]);
+                        path7.lineTo(pt[i][4],pt[i][5]);
+                        path7.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb7.put(data);
                     }
                     break;
                 case 23:
                     if (ac.mDrawMap.data[4][3]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path7.moveTo(pt[i][0],pt[i][1]);
+                        path7.lineTo(pt[i][2],pt[i][3]);
+                        path7.lineTo(pt[i][4],pt[i][5]);
+                        path7.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                        fb.put(data);
+                        fb7.put(data);
                     }
                     break;
-                case 24:
-                    //最後の囲み
-                    path.moveTo(pt[i][0],pt[i][1]);
-                    path.lineTo(pt[i][2],pt[i][3]);
-                    path.lineTo(pt[i][4],pt[i][5]);
-                    path.lineTo(pt[i][6],pt[i][7]);
-                    //壁の枠のデータを配列に格納(drawLines用に設定)
-                    float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
-                    fb.put(data);
             }
+            //描画
+            path.close();
+            path7.close();
+            canvas.drawPath(path, mPaint);
+            canvas.drawPath(path7, mPaint7);
         }
-        path.close();
-
-        //壁を黒で塗りつぶす
-        mPaint.setColor(Color.BLACK);
-        mPaint.setStyle(Paint.Style.FILL);
-        canvas.drawPath(path, mPaint);
-
-        //壁の枠を白で描画
-        mPaint.setColor(Color.WHITE);
-        canvas.drawLines(fb.array(), mPaint);
-
     }
-
 
     private void drawLines(Canvas canvas){
         mPaint.setStrokeWidth(1.0f);
