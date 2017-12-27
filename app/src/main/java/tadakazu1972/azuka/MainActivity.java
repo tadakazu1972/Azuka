@@ -85,11 +85,43 @@ public class MainActivity extends AppCompatActivity implements android.view.View
                 mDrawMap.data[i][j]=1;
             }
         }
+        //mMyChara.dirの値に応じて元マップから表示用配列に転送
+        switch (mMyChara.dir){
+            case 0:
+                for(int x=4;x>-1;x--){
+                    for (int y=-2;y<3;y++){
+                        mDrawMap.data[4-x][y+2] = mMap[mMyChara.currentMap].data[mMyChara.my+y][mMyChara.mx+x];
+                    }
+                }
+                break;
+            case 1:
+                for(int y=-4;y<1;y++){
+                    for(int x=-2;x<3;x++){
+                        mDrawMap.data[y+4][x+2] = mMap[mMyChara.currentMap].data[mMyChara.my+y][mMyChara.mx+x];
+                    }
+                }
+                break;
+            case 2:
+                for(int x=-4;x<1;x++){
+                    for(int y=2;y>-3;y--){
+                        mDrawMap.data[4+x][2-y] = mMap[mMyChara.currentMap].data[mMyChara.my+y][mMyChara.mx+x];
+                    }
+                }
+                break;
+            case 3:
+                for(int y=4;y>-1;y--){
+                    for(int x=2;x>-3;x--){
+                        mDrawMap.data[4-y][2-x] = mMap[mMyChara.currentMap].data[mMyChara.my+y][mMyChara.mx+x];
+                    }
+                }
+                break;
+        }
+        /*
         for(int i=0;i<5;i++){
             for(int j=0;j<5;j++){
                 mDrawMap.data[i][j]=mMap[mMyChara.currentMap].data[mMyChara.my+i][mMyChara.mx+j];
             }
-        }
+        }*/
     }
 
     private void initButtons(){
@@ -121,14 +153,14 @@ public class MainActivity extends AppCompatActivity implements android.view.View
                 switch(v.getId()){
                     case R.id.btnUp:
                         mMyChara.up(1);
-                        mMyChara.my = mMyChara.my - 1;
-                        if (mMyChara.my<0) { mMyChara.my = 0; }
+                        //移動
+                        mMyChara.dir = mMyChara.dir | 16;
                         transMap();
                         break;
                     case R.id.btnRight:
                         mMyChara.right(1);
-                        mMyChara.mx = mMyChara.mx + 1;
-                        if (mMyChara.mx>5) { mMyChara.mx = 5; }
+                        //右回り
+                        mMyChara.dir = (mMyChara.dir + 3) & 3;
                         transMap();
                         break;
                     case R.id.btnDown:
@@ -139,8 +171,8 @@ public class MainActivity extends AppCompatActivity implements android.view.View
                         break;
                     case R.id.btnLeft:
                         mMyChara.left(1);
-                        mMyChara.mx = mMyChara.mx - 1;
-                        if (mMyChara.mx<0) { mMyChara.mx = 0; }
+                        //左周り
+                        mMyChara.dir = (mMyChara.dir+1) & 3;
                         transMap();
                         break;
                 }

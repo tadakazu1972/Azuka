@@ -12,6 +12,7 @@ public class MyChara {
     public int index; //アニメーション用カウンタ
     public int currentMap; //現在キャラが存在するマップID
     protected int mx, my;
+    protected int dir;
 
     public MyChara(MainActivity _ac){
         ac = _ac;
@@ -28,6 +29,7 @@ public class MyChara {
         currentMap = 0;
         mx = 4;
         my = 4;
+        dir = 1;
     }
 
     public void move(){
