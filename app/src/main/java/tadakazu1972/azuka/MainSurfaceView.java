@@ -103,7 +103,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
             canvas.drawColor(Color.BLACK);
 
             //画像描画
-            drawMap(canvas);
+            //drawMap(canvas);
             drawMyChara(canvas);
 
             //ワイヤーフレーム描画
@@ -128,8 +128,8 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     private void drawMap(Canvas canvas){
         int mapIndex = ac.mMyChara.currentMap;
         int mapId = 0;
-        for (int y=0; y<10; y++){
-            for (int x=0; x<10; x++){
+        for (int y=0; y<20; y++){
+            for (int x=0; x<20; x++){
                 mapId = ac.mMap[mapIndex].data[y][x];
                 canvas.drawBitmap(sMap[mapId], x*32.0f, y*32.0f, null);
             }
@@ -168,6 +168,13 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
 
         //変数初期化
         Path path = new Path();
+        Path path0 = new Path();
+        Path path1 = new Path();
+        Path path2 = new Path();
+        Path path3 = new Path();
+        Path path4 = new Path();
+        Path path5 = new Path();
+        Path path6 = new Path();
         Path path7 = new Path();
         FloatBuffer fb = FloatBuffer.allocate(400);
         FloatBuffer fb0 = FloatBuffer.allocate(400);

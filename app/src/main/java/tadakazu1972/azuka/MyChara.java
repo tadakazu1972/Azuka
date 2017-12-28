@@ -32,6 +32,36 @@ public class MyChara {
         dir = 1;
     }
 
+    protected void checkMove(){
+        //自分が向いている方向によってマップ内の移動
+        switch (dir){
+            //右
+            case 0:
+                if (ac.mMap[currentMap].data[my][mx+1]==0){
+                   mx = mx + 1;
+                }
+                break;
+            //上
+            case 1:
+                if (ac.mMap[currentMap].data[my-1][mx]==0){
+                    my = my - 1;
+                }
+                break;
+            //左
+            case 2:
+                if (ac.mMap[currentMap].data[my][mx-1]==0){
+                    mx = mx - 1;
+                }
+                break;
+            //下
+            case 3:
+                if (ac.mMap[currentMap].data[my+1][mx]==0){
+                    my = my + 1;
+                }
+                break;
+        }
+    }
+
     public void move(){
         //当たり判定用マップ座標算出
         int x1=(int)(x+8.0f+vx)/32;  if (x1<0) x1=0; if (x1>9) x1=9;

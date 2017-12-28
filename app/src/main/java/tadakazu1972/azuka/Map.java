@@ -21,7 +21,7 @@ public class Map {
 
     public Map(int _index){
         index = _index;
-        data = new int[10][10];
+        data = new int[20][20];
         next = new int[4];
     }
 
@@ -37,12 +37,12 @@ public class Map {
                 String[] csv;
                 int y = 0;
                 while((csv = csvreader.readNext()) != null){
-                    for (int x=0;x<10;x++){
+                    for (int x=0;x<20;x++){
                         //読み込んだデータをある程度のレンジに変換して格納
                         int _data = parseInt(csv[x]);
                         data[y][x] = _data;
                     }
-                    y++; if (y>10){ y=0;}
+                    y++; if (y>20){ y=0;}
                 }
                 //データ代入
             } finally {

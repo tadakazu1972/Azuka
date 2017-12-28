@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements android.view.View
     //メンバクラス
     protected tadakazu1972.azuka.MyChara mMyChara;
     protected Map[] mMap;
+    protected int MX = 19; //マップX最大値-1
+    protected int MY = 19; //マップY最大値-1
     protected DrawMap mDrawMap;
 
     @Override
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements android.view.View
         for(int i=0;i<7;i++){
             mMap[i] = new Map(i);
             //csvファイルからマップデータを読み込み
-            String filename = String.format("map%d.csv", i);
+            String filename = String.format("level%d.csv", i);
             mMap[i].loadCSV(this, filename);
         }
         //next
@@ -90,28 +92,36 @@ public class MainActivity extends AppCompatActivity implements android.view.View
             case 0:
                 for(int x=4;x>-1;x--){
                     for (int y=-2;y<3;y++){
-                        mDrawMap.data[4-x][y+2] = mMap[mMyChara.currentMap].data[mMyChara.my+y][mMyChara.mx+x];
+                        if ((mMyChara.mx + x <= MY) && (mMyChara.my + y >= 0) && (mMyChara.my + y <= MX)) {
+                            mDrawMap.data[4 - x][y + 2] = mMap[mMyChara.currentMap].data[mMyChara.my + y][mMyChara.mx + x];
+                        }
                     }
                 }
                 break;
             case 1:
                 for(int y=-4;y<1;y++){
                     for(int x=-2;x<3;x++){
-                        mDrawMap.data[y+4][x+2] = mMap[mMyChara.currentMap].data[mMyChara.my+y][mMyChara.mx+x];
+                        if ((mMyChara.my + y >= 0) && (mMyChara.mx + x >= 0) && (mMyChara.mx + x <= MY)) {
+                            mDrawMap.data[y + 4][x + 2] = mMap[mMyChara.currentMap].data[mMyChara.my + y][mMyChara.mx + x];
+                        }
                     }
                 }
                 break;
             case 2:
                 for(int x=-4;x<1;x++){
                     for(int y=2;y>-3;y--){
-                        mDrawMap.data[4+x][2-y] = mMap[mMyChara.currentMap].data[mMyChara.my+y][mMyChara.mx+x];
+                        if ((mMyChara.mx + x >= 0) && (mMyChara.my + y >= 0) && (mMyChara.my + y <= MY)) {
+                            mDrawMap.data[4 + x][2 - y] = mMap[mMyChara.currentMap].data[mMyChara.my + y][mMyChara.mx + x];
+                        }
                     }
                 }
                 break;
             case 3:
                 for(int y=4;y>-1;y--){
                     for(int x=2;x>-3;x--){
-                        mDrawMap.data[4-y][2-x] = mMap[mMyChara.currentMap].data[mMyChara.my+y][mMyChara.mx+x];
+                        if ((mMyChara.my + y <= MY) && (mMyChara.mx + x >= 0) && (mMyChara.mx + x <= MY)) {
+                            mDrawMap.data[4 - y][2 - x] = mMap[mMyChara.currentMap].data[mMyChara.my + y][mMyChara.mx + x];
+                        }
                     }
                 }
                 break;
@@ -154,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements android.view.View
                     case R.id.btnUp:
                         mMyChara.up(1);
                         //移動
-                        mMyChara.dir = mMyChara.dir | 16;
+                        mMyChara.checkMove();
                         transMap();
                         break;
                     case R.id.btnRight:
