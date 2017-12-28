@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity implements android.view.View.OnTouchListener, android.view.View.OnLongClickListener {
+public class MainActivity extends AppCompatActivity implements android.view.View.OnTouchListener {
 
     protected SurfaceView surfaceview; //activity_main.xmlの中のSurfaceView領域保持用
     protected MainSurfaceView mainSurfaceView; //クラス保持用
@@ -126,12 +126,6 @@ public class MainActivity extends AppCompatActivity implements android.view.View
                 }
                 break;
         }
-        /*
-        for(int i=0;i<5;i++){
-            for(int j=0;j<5;j++){
-                mDrawMap.data[i][j]=mMap[mMyChara.currentMap].data[mMyChara.my+i][mMyChara.mx+j];
-            }
-        }*/
     }
 
     private void initButtons(){
@@ -140,11 +134,6 @@ public class MainActivity extends AppCompatActivity implements android.view.View
         findViewById(R.id.btnRight).setOnTouchListener(this);
         findViewById(R.id.btnDown).setOnTouchListener(this);
         findViewById(R.id.btnLeft).setOnTouchListener(this);
-        //ボタンにonLongClickイベント設定
-        findViewById(R.id.btnUp).setOnLongClickListener(this);
-        findViewById(R.id.btnRight).setOnLongClickListener(this);
-        findViewById(R.id.btnDown).setOnLongClickListener(this);
-        findViewById(R.id.btnLeft).setOnLongClickListener(this);
     }
 
     @Override
@@ -154,61 +143,31 @@ public class MainActivity extends AppCompatActivity implements android.view.View
         switch(action){
             //ボタンから指が離れた時
             case MotionEvent.ACTION_UP:
-                //連続イベントフラグをfalse
-                //repeatFlg = false;
-                //ゲームスタート
-                //if (mainSurfaceView.gs==0) mainSurfaceView.gs=1;
                 break;
             case MotionEvent.ACTION_DOWN:
                 switch(v.getId()){
                     case R.id.btnUp:
-                        mMyChara.up(1);
-                        //移動
+                        //前進
                         mMyChara.checkMove();
                         transMap();
                         break;
                     case R.id.btnRight:
-                        mMyChara.right(1);
                         //右回り
                         mMyChara.dir = (mMyChara.dir + 3) & 3;
                         transMap();
                         break;
                     case R.id.btnDown:
-                        mMyChara.down(1);
-                        mMyChara.my = mMyChara.my + 1;
-                        if (mMyChara.my>5) { mMyChara.my = 5; }
+                        //振り向き
+                        mMyChara.dir = (mMyChara.dir + 2) & 3;
                         transMap();
                         break;
                     case R.id.btnLeft:
-                        mMyChara.left(1);
                         //左周り
-                        mMyChara.dir = (mMyChara.dir+1) & 3;
+                        mMyChara.dir = (mMyChara.dir + 1) & 3;
                         transMap();
                         break;
                 }
         }
         return false;
-    }
-
-    //長押しすると３倍速で移動
-    @Override
-    public boolean onLongClick(View v){
-        switch(v.getId()) {
-            case R.id.btnUp:
-                //連続イベントフラグをtrue
-                //repeatFlg = true;
-                mMyChara.up(3);
-                break;
-            case R.id.btnRight:
-                mMyChara.right(3);
-                break;
-            case R.id.btnDown:
-                mMyChara.down(3);
-                break;
-            case R.id.btnLeft:
-                mMyChara.left(3);
-                break;
-        }
-        return true;
     }
 }

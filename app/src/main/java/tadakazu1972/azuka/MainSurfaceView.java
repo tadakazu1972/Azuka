@@ -31,6 +31,13 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     private Bitmap[] sMap;
     //ワイヤーフレーム描画用
     private Paint mPaint = new Paint();
+    private Paint mPaint0 = new Paint();
+    private Paint mPaint1 = new Paint();
+    private Paint mPaint2 = new Paint();
+    private Paint mPaint3 = new Paint();
+    private Paint mPaint4 = new Paint();
+    private Paint mPaint5 = new Paint();
+    private Paint mPaint6 = new Paint();
     private Paint mPaint7 = new Paint();
     private Paint mPaintLine = new Paint();
 
@@ -104,7 +111,7 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
 
             //画像描画
             //drawMap(canvas);
-            drawMyChara(canvas);
+            //drawMyChara(canvas);
 
             //ワイヤーフレーム描画
             //drawLines(canvas);
@@ -139,8 +146,8 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
 
     private void drawPath(Canvas canvas){
         //壁の枠を白で描画
-        mPaintLine.setColor(Color.WHITE);
-        mPaintLine.setStrokeWidth(2);
+        mPaintLine.setARGB(255, 192,192,192);
+        mPaintLine.setStrokeWidth(1);
 
         //天井　横の線
         canvas.drawLine(0,  0,300, 0, mPaintLine);
@@ -185,10 +192,24 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         FloatBuffer fb5 = FloatBuffer.allocate(400);
         FloatBuffer fb6 = FloatBuffer.allocate(400);
         FloatBuffer fb7 = FloatBuffer.allocate(400);
-        //壁を黒で塗りつぶす
+        //壁を塗りつぶす色設定
         mPaint.setColor(Color.BLACK);
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint7.setColor(Color.CYAN);
+        mPaint0.setARGB(255, 0,0,96);
+        mPaint0.setStyle(Paint.Style.FILL);
+        mPaint1.setARGB(255,0,0,64);
+        mPaint1.setStyle(Paint.Style.FILL);
+        mPaint2.setARGB(255, 0,0,128);
+        mPaint2.setStyle(Paint.Style.FILL);
+        mPaint3.setARGB(255, 0, 0,96);
+        mPaint3.setStyle(Paint.Style.FILL);
+        mPaint4.setARGB(255, 0, 0, 160);
+        mPaint4.setStyle(Paint.Style.FILL);
+        mPaint5.setARGB(255,0,0,128);
+        mPaint5.setStyle(Paint.Style.FILL);
+        mPaint6.setARGB(255,0,0,192);
+        mPaint6.setStyle(Paint.Style.FILL);
+        mPaint7.setARGB(255,0,0,160);
         mPaint7.setStyle(Paint.Style.FILL);
 
 
@@ -226,50 +247,50 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 //４ブロック先の正面の壁
                 case 0:
                     if (ac.mDrawMap.data[0][0]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path0.moveTo(pt[i][0],pt[i][1]);
+                        path0.lineTo(pt[i][2],pt[i][3]);
+                        path0.lineTo(pt[i][4],pt[i][5]);
+                        path0.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb0.put(data);
                     }
                     break;
                 case 1:
                     if (ac.mDrawMap.data[0][1]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path0.moveTo(pt[i][0],pt[i][1]);
+                        path0.lineTo(pt[i][2],pt[i][3]);
+                        path0.lineTo(pt[i][4],pt[i][5]);
+                        path0.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb0.put(data);
                     }
                     break;
                 case 2:
                     if (ac.mDrawMap.data[0][2]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path0.moveTo(pt[i][0],pt[i][1]);
+                        path0.lineTo(pt[i][2],pt[i][3]);
+                        path0.lineTo(pt[i][4],pt[i][5]);
+                        path0.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb0.put(data);
                     }
                     break;
                 case 3:
                     if (ac.mDrawMap.data[0][3]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path0.moveTo(pt[i][0],pt[i][1]);
+                        path0.lineTo(pt[i][2],pt[i][3]);
+                        path0.lineTo(pt[i][4],pt[i][5]);
+                        path0.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb0.put(data);
                     }
                     break;
                 case 4:
                     if (ac.mDrawMap.data[0][4]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path0.moveTo(pt[i][0],pt[i][1]);
+                        path0.lineTo(pt[i][2],pt[i][3]);
+                        path0.lineTo(pt[i][4],pt[i][5]);
+                        path0.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb0.put(data);
                     }
@@ -277,40 +298,40 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 //３ブロック先の横の壁
                 case 5:
                     if (ac.mDrawMap.data[1][0]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path1.moveTo(pt[i][0],pt[i][1]);
+                        path1.lineTo(pt[i][2],pt[i][3]);
+                        path1.lineTo(pt[i][4],pt[i][5]);
+                        path1.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb1.put(data);
                     }
                     break;
                 case 6:
                     if (ac.mDrawMap.data[1][1]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path1.moveTo(pt[i][0],pt[i][1]);
+                        path1.lineTo(pt[i][2],pt[i][3]);
+                        path1.lineTo(pt[i][4],pt[i][5]);
+                        path1.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb1.put(data);
                     }
                     break;
                 case 7:
                     if (ac.mDrawMap.data[1][3]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path1.moveTo(pt[i][0],pt[i][1]);
+                        path1.lineTo(pt[i][2],pt[i][3]);
+                        path1.lineTo(pt[i][4],pt[i][5]);
+                        path1.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb1.put(data);
                     }
                     break;
                 case 8:
                     if (ac.mDrawMap.data[1][4]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path1.moveTo(pt[i][0],pt[i][1]);
+                        path1.lineTo(pt[i][2],pt[i][3]);
+                        path1.lineTo(pt[i][4],pt[i][5]);
+                        path1.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb1.put(data);
                     }
@@ -318,30 +339,30 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 //３ブロック先の正面の壁
                 case 9:
                     if (ac.mDrawMap.data[1][1]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path2.moveTo(pt[i][0],pt[i][1]);
+                        path2.lineTo(pt[i][2],pt[i][3]);
+                        path2.lineTo(pt[i][4],pt[i][5]);
+                        path2.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb2.put(data);
                     }
                     break;
                 case 10:
                     if (ac.mDrawMap.data[1][2]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path2.moveTo(pt[i][0],pt[i][1]);
+                        path2.lineTo(pt[i][2],pt[i][3]);
+                        path2.lineTo(pt[i][4],pt[i][5]);
+                        path2.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb2.put(data);
                     }
                     break;
                 case 11:
                     if (ac.mDrawMap.data[1][3]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path2.moveTo(pt[i][0],pt[i][1]);
+                        path2.lineTo(pt[i][2],pt[i][3]);
+                        path2.lineTo(pt[i][4],pt[i][5]);
+                        path2.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb2.put(data);
                     }
@@ -349,20 +370,20 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 //２ブロック先の横の壁
                 case 12:
                     if (ac.mDrawMap.data[2][1]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path3.moveTo(pt[i][0],pt[i][1]);
+                        path3.lineTo(pt[i][2],pt[i][3]);
+                        path3.lineTo(pt[i][4],pt[i][5]);
+                        path3.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb3.put(data);
                     }
                     break;
                 case 13:
                     if (ac.mDrawMap.data[2][3]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path3.moveTo(pt[i][0],pt[i][1]);
+                        path3.lineTo(pt[i][2],pt[i][3]);
+                        path3.lineTo(pt[i][4],pt[i][5]);
+                        path3.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb3.put(data);
                     }
@@ -370,30 +391,30 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 //２ブロック先の正面の壁
                 case 14:
                     if (ac.mDrawMap.data[2][1]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path4.moveTo(pt[i][0],pt[i][1]);
+                        path4.lineTo(pt[i][2],pt[i][3]);
+                        path4.lineTo(pt[i][4],pt[i][5]);
+                        path4.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb4.put(data);
                     }
                     break;
                 case 15:
                     if (ac.mDrawMap.data[2][2]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path4.moveTo(pt[i][0],pt[i][1]);
+                        path4.lineTo(pt[i][2],pt[i][3]);
+                        path4.lineTo(pt[i][4],pt[i][5]);
+                        path4.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb4.put(data);
                     }
                     break;
                 case 16:
                     if (ac.mDrawMap.data[2][3]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path4.moveTo(pt[i][0],pt[i][1]);
+                        path4.lineTo(pt[i][2],pt[i][3]);
+                        path4.lineTo(pt[i][4],pt[i][5]);
+                        path4.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb4.put(data);
                     }
@@ -401,20 +422,20 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 //１ブロック先の横の壁
                 case 17:
                     if (ac.mDrawMap.data[3][1]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path5.moveTo(pt[i][0],pt[i][1]);
+                        path5.lineTo(pt[i][2],pt[i][3]);
+                        path5.lineTo(pt[i][4],pt[i][5]);
+                        path5.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb5.put(data);
                     }
                     break;
                 case 18:
                     if (ac.mDrawMap.data[3][3]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path5.moveTo(pt[i][0],pt[i][1]);
+                        path5.lineTo(pt[i][2],pt[i][3]);
+                        path5.lineTo(pt[i][4],pt[i][5]);
+                        path5.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb5.put(data);
                     }
@@ -422,30 +443,30 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 //１ブロック先の正面の壁
                 case 19:
                     if (ac.mDrawMap.data[3][1]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path6.moveTo(pt[i][0],pt[i][1]);
+                        path6.lineTo(pt[i][2],pt[i][3]);
+                        path6.lineTo(pt[i][4],pt[i][5]);
+                        path6.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb6.put(data);
                     }
                     break;
                 case 20:
                     if (ac.mDrawMap.data[3][2]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path6.moveTo(pt[i][0],pt[i][1]);
+                        path6.lineTo(pt[i][2],pt[i][3]);
+                        path6.lineTo(pt[i][4],pt[i][5]);
+                        path6.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb6.put(data);
                     }
                     break;
                 case 21:
                     if (ac.mDrawMap.data[3][3]==1){
-                        path.moveTo(pt[i][0],pt[i][1]);
-                        path.lineTo(pt[i][2],pt[i][3]);
-                        path.lineTo(pt[i][4],pt[i][5]);
-                        path.lineTo(pt[i][6],pt[i][7]);
+                        path6.moveTo(pt[i][0],pt[i][1]);
+                        path6.lineTo(pt[i][2],pt[i][3]);
+                        path6.lineTo(pt[i][4],pt[i][5]);
+                        path6.lineTo(pt[i][6],pt[i][7]);
                         float data[] = {pt[i][0],pt[i][1], pt[i][2],pt[i][3], pt[i][2],pt[i][3], pt[i][4],pt[i][5], pt[i][4],pt[i][5], pt[i][6],pt[i][7], pt[i][6],pt[i][7], pt[i][0],pt[i][1]};
                         fb6.put(data);
                     }
@@ -473,9 +494,20 @@ public class MainSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                     break;
             }
             //描画
-            path.close();
+            path1.close();
+            path2.close();
+            path3.close();
+            path4.close();
+            path5.close();
+            path6.close();
             path7.close();
-            canvas.drawPath(path, mPaint);
+            canvas.drawPath(path0, mPaint0);
+            canvas.drawPath(path1, mPaint1);
+            canvas.drawPath(path2, mPaint2);
+            canvas.drawPath(path3, mPaint3);
+            canvas.drawPath(path4, mPaint4);
+            canvas.drawPath(path5, mPaint5);
+            canvas.drawPath(path6, mPaint6);
             canvas.drawPath(path7, mPaint7);
         }
     }
